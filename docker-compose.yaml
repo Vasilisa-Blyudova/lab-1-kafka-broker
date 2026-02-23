@@ -122,6 +122,7 @@ services:
       - broker-3
     networks:
       - internal
+      - public
     volumes:
       - ./data:/app/data:rw
     environment:

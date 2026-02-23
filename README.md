@@ -96,6 +96,10 @@ Alternatively, download it manually and place it into: mounted folder `./data`
 
 After startup, open: http://localhost:8501
 
+To stop the services run the command:
+```bash
+docker compose down -v
+```
 
 ### View logs
 ```bash
