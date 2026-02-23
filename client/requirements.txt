@@ -1,0 +1,4 @@
+confluent-kafka==2.13.0
+pandas==2.3.3
+streamlit==1.54.0
+typed-argument-parser==1.11.0

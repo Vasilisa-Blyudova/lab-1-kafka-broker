@@ -1,0 +1,6 @@
+confluent-kafka==2.13.0
+datasets==4.5.0
+pandas==2.3.3
+progressbar==2.5
+typed-argument-parser==1.11.0
+kagglehub==1.0.0

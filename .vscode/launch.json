@@ -1,0 +1,71 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Data Producer",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "services/data_producer/main.py",
+      "console": "integratedTerminal",
+      "args": [
+        "--broker-url", "localhost:9094",
+        "--broker-topic", "raw-data"
+      ],
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}:${PYTHONPATH}"
+      }
+    },
+    {
+      "name": "Preprocessor",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "services/preprocessor/main.py",
+      "console": "integratedTerminal",
+      "args": [
+        "--broker-url", "localhost:9094",
+        "--broker-topic-to-read", "raw-data",
+        "--broker-topic-to-write", "processed-data"
+      ],
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}:${PYTHONPATH}"
+      }
+    },
+    {
+       "name": "Inference",
+       "type": "debugpy",
+       "request": "launch",
+       "program": "services/inference/main.py",
+       "console": "integratedTerminal",
+       "args": [
+         "--broker-url", "localhost:9094",
+         "--broker-topic-to-read", "processed-data",
+         "--broker-topic-to-write", "results",
+         "--encoder-path", "${workspaceFolder}/model/encoder.joblib",
+         "--scaler-path", "${workspaceFolder}/model/scaler.joblib",
+         "--classifier-path", "${workspaceFolder}/model/classifier.joblib",
+       ],
+       "env": {
+         "PYTHONPATH": "${workspaceFolder}:${PYTHONPATH}"
+       }
+     },
+    {
+       "name": "Dashboard",
+       "type": "debugpy",
+       "request": "launch",
+       "module": "streamlit",
+       "console": "integratedTerminal",
+       "args": [
+         "run", "client/main.py",
+         "--",
+         "--broker-url", "localhost:9094",
+         "--broker-topic-to-read", "results",
+       ],
+       "env": {
+         "PYTHONPATH": "${workspaceFolder}:${PYTHONPATH}"
+       }
+     },
+   ]
+}

@@ -1,0 +1,5 @@
+-r client/requirements.txt
+-r eda/requirements.txt
+-r services/data_producer/requirements.txt
+-r services/inference/requirements.txt
+-r services/preprocessor/requirements.txt
