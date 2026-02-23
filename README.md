@@ -13,6 +13,7 @@ The system processes movie rating data through multiple microservices and perfor
 - Streaming data processing pipeline
 - Microservice architecture
 - Fully containerized (Docker Compose) with private and public networks
+- All images are pre-built and published in my repo: https://hub.docker.com/repository/docker/vasilisablyudova/lab-1-kafka/tags
 - Real-time metrics dashboard (Streamlit)
 - CI with `black`, `isort`, `pylint`
 

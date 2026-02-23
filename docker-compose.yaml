@@ -115,6 +115,7 @@ services:
     build:
       context: .
       dockerfile: services/data_producer/Dockerfile
+    image: vasilisablyudova/lab-1-kafka:data-producer
     container_name: data-producer
     depends_on:
       - broker-1
@@ -133,6 +134,7 @@ services:
     build:
       context: .
       dockerfile: services/preprocessor/Dockerfile
+    image: vasilisablyudova/lab-1-kafka:preprocessor
     container_name: preprocessor
     depends_on:
       - data-producer
@@ -146,6 +148,7 @@ services:
     build:
       context: .
       dockerfile: services/inference/Dockerfile
+    image: vasilisablyudova/lab-1-kafka:inference
     container_name: inference
     networks:
       - internal
@@ -162,6 +165,7 @@ services:
     build:
       context: .
       dockerfile: client/Dockerfile
+    image: vasilisablyudova/lab-1-kafka:dashboard
     container_name: dashboard
     depends_on:
       - inference
